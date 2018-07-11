@@ -29,14 +29,27 @@ def download_images(url):
 	system(extract)
 
 def resize_images():
-	images = list_images()
-
-	for file in images:
-		img = Image.open(file)
-		img = img.resize((640, 480), Image.ANTIALIAS)
-		img.save(file, "JPEG")
-
-def list_images():
+     baseheight = 480
+     images = list_images()
+     for file in images:
+          img = Image.open(file)
+          hpercent = float(float(img.size[0])/float(img.size[1]))
+          neww = int(baseheight*float(hpercent))
+          img = img.resize((neww,baseheight), Image.ANTIALIAS)
+          img.save(file, "JPEG")
+ 
+def add_borders():
+     images = list_images()
+     for file in images:
+          old_im = Image.open(file)
+          old_size = old_im.size
+          new_size = (640, 480)
+          new_im = Image.new("RGB", new_size)
+          new_im.paste(old_im, ((new_size[0]-old_size[0])/2,
+                                               (new_size[1]-old_size[1])/2))
+          new_im.save(file)
+ 
+ def list_images():
 	images = []
 
 	dir = base_path + "*.jpg"
@@ -102,6 +115,7 @@ def initialize():
 
 	download_images(dropbox_link)
 	resize_images()
+	add_borders()
 	image_list = list_images()
 
 	carrousel_status = current_carrousel_status
