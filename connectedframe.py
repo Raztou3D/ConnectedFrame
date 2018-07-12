@@ -48,13 +48,10 @@ def add_borders():
         new_im.paste(old_im, ((new_size[0]-old_size[0])/2, (new_size[1]-old_size[1])/2))
         new_im.save(file)
  
- def list_images():
+def list_images():
 	images = []
-
 	dir = base_path + "*.jpg"
-
 	images = glob(dir)
-
 	return images
 
 def previous_image():
