@@ -30,13 +30,13 @@ def download_images(url):
 
 def resize_images():
     baseheight = 480
+	quality_val = 90
     images = list_images()
     for file in images:
         img = Image.open(file)
         hpercent = float(float(img.size[0])/float(img.size[1]))
         neww = int(baseheight*float(hpercent))
         img = img.resize((neww,baseheight), Image.ANTIALIAS)
-		quality_val = 90
         img.save(file, "JPEG", quality=quality_val)
  
 def add_borders():
