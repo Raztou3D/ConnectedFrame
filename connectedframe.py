@@ -36,7 +36,8 @@ def resize_images():
         hpercent = float(float(img.size[0])/float(img.size[1]))
         neww = int(baseheight*float(hpercent))
         img = img.resize((neww,baseheight), Image.ANTIALIAS)
-        img.save(file, "JPEG")
+		quality_val = 90
+        img.save(file, "JPEG", quality=quality_val)
  
 def add_borders():
     images = list_images()
