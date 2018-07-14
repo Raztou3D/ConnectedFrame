@@ -30,7 +30,7 @@ def download_images(url):
 
 def resize_images():
     baseheight = 480
-	quality_val = 90
+    quality_val = 90
     images = list_images()
     for file in images:
         img = Image.open(file)
