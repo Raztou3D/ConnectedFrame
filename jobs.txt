@@ -3,3 +3,9 @@
 
 # Turn on display every morning 
 0 6 * * * echo 0 > /sys/class/backlight/rpi_backlight/bl_power
+
+# Lowest brightness from 6PM
+0 18 * * * echo 40 > /sys/class/backlight/rpi_backlight/brightness
+
+# Low brightness from 10AM
+0 10 * * * echo 80 > /sys/class/backlight/rpi_backlight/brightness
