@@ -1,5 +1,5 @@
 # This is to set the correct timezone on the Host
-TZ="Europe/Zurich"
+CRON_TZ=Europe/Zurich
 
 # Turn off display every evening 
 0 23 * * * echo 1 > /sys/class/backlight/rpi_backlight/bl_power
