@@ -1,5 +1,5 @@
 # This is to set the correct timezone on the Host
-CRON_TZ=Europe/Zurich
+# CRON_TZ=Europe/Zurich
 
 # Every hours and 1 minute, run the automation script
-1 * * * * ./frameautomation.sh
+*/5 * * * * /usr/src/app/frameautomation.sh

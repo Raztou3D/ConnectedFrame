@@ -1,7 +1,7 @@
 #!/bin/bash
 # Purpose: The goal of this script is to enable iFrame users to choose the turn ou/off and high/low brightness time and values for their particular device.
 # Author: Raztou3D
-# Date/Time: 06-11-2018.12:00
+# Date/Time: 12-11-2018.12:00
 
 # The device's identification is done by the "FRAME_OWNER" environement variable, here is the list as of the 01.11.2018
 # FRAME_OWNER			RESIN_DEVICE_NAME_AT_INIT	HOSTNAME	UUID
@@ -28,12 +28,12 @@
 num_rows=7
 num_columns=7
 timelist0=(Device ON1 OFF1 ON2 OFF2 ON3 OFF3)
-timelist1=(Azad 6 12 12 23 7 23)
-timelist2=(Helizio 6 12 12 23 7 23)
-timelist3=(Mahrene 6 12 12 23 7 23)
-timelist4=(Rezaid 6 12 13 23 7 23)
-timelist5=(Aletrin 6 12 12 23 7 23)
-timelist6=(Dunki 6 12 12 23 6 23)
+timelist1=(Azad 6 9 17 23 7 23)
+timelist2=(Helizio 6 9 17 23 7 23)
+timelist3=(Mahrene 6 9 17 23 7 23)
+timelist4=(Rezaid 6 9 17 23 7 23)
+timelist5=(Aletrin 6 9 17 23 7 23)
+timelist6=(Dunki 6 22 6 22 6 22)
 
 # Brightness values and time
 HIGH=80 	# 80% screen brightness
@@ -82,7 +82,6 @@ for ((j=1;j<=num_columns;j++)); do
 				# Turn screen ON
 				echo 0 > /sys/class/backlight/rpi_backlight/bl_power
 				echo Screen is now ON.
-				echo Screen brightness is now HIGH.
 			elif [[ $NOW -ge $((autotimes[6])) && $NOW -lt $((autotimes[5])) ]]; then
 				# Turn screen OFF
 				echo 1 > /sys/class/backlight/rpi_backlight/bl_power
