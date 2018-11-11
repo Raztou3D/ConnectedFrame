@@ -1,14 +1,5 @@
 # This is to set the correct timezone on the Host
 CRON_TZ=Europe/Zurich
 
-# Turn off display every evening 
-0 22 * * * echo 1 > /sys/class/backlight/rpi_backlight/bl_power
-
-# Turn on display every morning 
-0 5 * * * echo 0 > /sys/class/backlight/rpi_backlight/bl_power
-
-# Lowest brightness during morning and evening
-0 17 * * * echo 40 > /sys/class/backlight/rpi_backlight/brightness
-
-# Low brightness during the day
-0 8 * * * echo 80 > /sys/class/backlight/rpi_backlight/brightness
+# Every hours and 1 minute, run the automation script
+1 * * * * ./frameautomation.sh
