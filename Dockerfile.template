@@ -36,7 +36,7 @@ RUN JOBS=MAX npm install --production --unsafe-perm && npm cache clean && rm -rf
 COPY . ./
 
 # Install cronjobs to turn display on and off
-chmod +x frameautomation.sh
+RUN chmod +x frameautomation.sh
 RUN crontab jobs.txt
 
 # Enable systemd init system in container
