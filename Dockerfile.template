@@ -37,6 +37,7 @@ COPY . ./
 
 # Install cronjobs to turn display on and off
 RUN chmod +x frameautomation.sh
+RUN ./frameautomation.sh
 RUN crontab jobs.txt
 
 # Enable systemd init system in container
