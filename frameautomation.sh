@@ -1,4 +1,6 @@
 #!/bin/bash
+echo "iFrame automation script run." >> /var/log/iframelog
+
 # Purpose: The goal of this script is to enable iFrame users to choose the turn ou/off and high/low brightness time and values for their particular device.
 # Author: Raztou3D
 # Date/Time: 12-11-2018.12:00
@@ -70,10 +72,12 @@ for ((j=1;j<=num_columns;j++)); do
 				# Turn screen ON
 				echo 0 > /sys/class/backlight/rpi_backlight/bl_power
 				echo Screen is now ON.
+				echo "iFrame is set to ON." >> /var/log/iframelog
 			elif [[ $NOW -lt $((autotimes[1])) || $NOW -ge $((autotimes[2])) && $NOW -lt $((autotimes[3])) || $NOW -ge $((autotimes[4])) ]]; then
 				# Turn screen OFF
 				echo 1 > /sys/class/backlight/rpi_backlight/bl_power
 				echo Screen is now OFF.
+				echo "iFrame is set to OFF." >> /var/log/iframelog
 			fi
 		# On weekends
 		else
@@ -82,10 +86,12 @@ for ((j=1;j<=num_columns;j++)); do
 				# Turn screen ON
 				echo 0 > /sys/class/backlight/rpi_backlight/bl_power
 				echo Screen is now ON.
+				echo "iFrame is set to ON." >> /var/log/iframelog
 			elif [[ $NOW -ge $((autotimes[6])) && $NOW -lt $((autotimes[5])) ]]; then
 				# Turn screen OFF
 				echo 1 > /sys/class/backlight/rpi_backlight/bl_power
 				echo Screen is now OFF.
+				echo "iFrame is set to OFF." >> /var/log/iframelog
 			fi
 		fi
 		break
@@ -99,8 +105,10 @@ if [[ $NOW -ge $T_HIGH && $NOW -lt $T_LOW ]]; then
     # Turn brightness to HIGH
 	echo $HIGH > /sys/class/backlight/rpi_backlight/brightness
 	echo Screen brightness is now HIGH.
+	echo "iFrame is set to HIGH brightness." >> /var/log/iframelog
 elif [[ $NOW -ge $T_LOW || $NOW -lt $T_HIGH ]]; then
 	# Turn screen OFF
 	echo $LOW > /sys/class/backlight/rpi_backlight/brightness
 	echo Screen brightness is now LOW.
+	echo "iFrame is set to LOW brightness." >> /var/log/iframelog
 fi
