@@ -45,6 +45,7 @@ T_LOW=18    # turn screen brightness down at 6pm
 
 # Get current hour (00..23)
 NOW=$(date +"%H")
+NOW=${NOW#0}
 echo "Current time : $NOW"
 
 # Get current week day (Monday = 1 ... Sunday = 7)
@@ -53,7 +54,6 @@ echo "Current week day : $DOW"
 
 # Get device name
 NAME=$RESIN_DEVICE_NAME_AT_INIT
-
 
 # Automation per devices - Turn screen ON / OFF
 for ((j=1;j<=num_columns;j++)); do
@@ -65,7 +65,7 @@ for ((j=1;j<=num_columns;j++)); do
 		# On week days 
 		if [ $DOW -le 5 ]; then 
 		    echo Today is a week day.
-            LOCAL_LIST="timelist${j}[@]"
+            LOCAL_LIST=timelist$j[@]
             LOCAL_NAME=${!LOCAL_LIST}
             IFS=' ' read -r -a autotimes <<< ${LOCAL_NAME}
 			if [[ $NOW -ge $((autotimes[1])) && $NOW -lt $((autotimes[2])) || $NOW -ge $((autotimes[3])) && $NOW -lt $((autotimes[4])) ]]; then
