@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y \
 # Install timezone management package
 RUN apt-get install -y tzdata
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN echo "LANG=en_US.UTF-8" > /etc/default/locale
 
 # Set Xorg and FLUXBOX preferences
 RUN mkdir ~/.fluxbox
