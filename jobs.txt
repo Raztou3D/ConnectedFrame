@@ -1,3 +1,5 @@
+SHELL=/bin/bash
+BASH_ENV=/usr/src/app/container.env
 TZ=Europe/Zurich
 MAILTO=""
 
