@@ -1,6 +1,6 @@
 #!/bin/bash
-echo " "
-echo $(date)
+echo " " >> /var/log/iframelog
+echo $(date) >> /var/log/iframelog
 echo "iFrame automation script run." >> /var/log/iframelog
 
 # Purpose: The goal of this script is to enable iFrame users to choose the turn ou/off and high/low brightness time and values for their particular device.
@@ -35,7 +35,7 @@ timelist0=(Device ON1 OFF1 ON2 OFF2 ON3 OFF3)
 timelist1=(Azad 6 9 17 23 7 23)
 timelist2=(Helizio 6 9 17 23 7 23)
 timelist3=(Mahrene 6 9 17 23 7 23)
-timelist4=(Rezaid 6 9 17 23 7 23)
+timelist4=(Rezaid 6 11 17 23 7 23)
 timelist5=(Aletrin 6 9 17 23 7 23)
 timelist6=(Dunki 6 22 6 22 6 22)
 
