@@ -1,2 +1,5 @@
-# Every 15 minute, run the automation script
-0,5,10,15,,20,25,30,35,40,45,50,55 * * * * root /usr/src/app/frameautomation.sh
+TZ=Europe/Zurich
+MAILTO=""
+
+# Every minute, run the automation script
+* * * * * root /usr/src/app/frameautomation.sh > /dev/null 2>$1
