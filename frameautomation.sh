@@ -95,7 +95,7 @@ for ((j=1;j<=num_columns;j++)); do
 				echo 0 > /sys/class/backlight/rpi_backlight/bl_power
 				echo Screen is now ON.
 				echo "iFrame is set to ON." >> /var/log/iframelog
-			elif [[ $NOW -ge $((autotimes[6])) && $NOW -lt $((autotimes[5])) ]]; then
+			elif [[ $NOW -ge $((autotimes[6])) || $NOW -lt $((autotimes[5])) ]]; then
 				# Turn screen OFF
 				echo 1 > /sys/class/backlight/rpi_backlight/bl_power
 				echo Screen is now OFF.
